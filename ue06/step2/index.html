@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Uhr ohne Server</title>
+</head>
+<body>
+<script src="https://unpkg.com/vue@3"></script>
+
+<div id="app">
+    Uhrzeit: {{now}}
+</div>
+
+<script>
+    const app = Vue.createApp({
+        setup() {
+            const now = Vue.ref(new Date().toLocaleTimeString());
+
+            setInterval(() => {
+                now.value = new Date().toLocaleTimeString();
+            }, 1000);
+
+            return {
+                now
+            };
+        }
+    });
+
+    app.mount("#app");
+</script>
+
+</body>
+</html>
